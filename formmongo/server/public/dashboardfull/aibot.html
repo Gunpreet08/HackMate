@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hackathon Chatbot</title>
+    <style>
+       body {
+    font-family: Arial, sans-serif;
+    background-image: url("images/bgcb3.webp");
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    color: white;
+    text-align: center;
+    position: relative;
+}
+
+
+        .chat-container {
+            /* background-image: url('cb4.webp'); */
+            width: 50%;
+            margin: 20px auto;
+            background: #01423f;
+            padding: 20px;
+            display: block;
+            border-radius: 10px;
+            box-shadow: 0px 0px 15px rgba(255, 255, 255, 0.2);
+          
+        }
+        .messages {
+            height: 350px;
+            overflow-y: auto;
+            background: #ffffff;
+            color: black;
+            padding: 10px;
+            border-radius: 5px;
+            text-align: left;
+            scroll-behavior: smooth;
+        }
+        .input-container {
+            display: flex;
+            margin-top: 10px;
+        }
+        input {
+            flex: 1;
+            padding: 10px;
+            border-radius: 5px;
+            border: none;
+        }
+        button {
+            padding: 10px;
+            background-color: #00F5D4;
+            color: black;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        .message {
+            padding: 8px;
+            border-radius: 5px;
+            margin-bottom: 10px;
+        }
+        .user-message {
+            background-color: #c20f86;
+            color: black;
+            font-weight: bold;
+            padding: 10px;
+            border-radius: 5px;
+        }
+        .bot-message {
+            background-color: #00F5D4;
+            color: black;
+            padding: 10px;
+            border-radius: 5px;
+        }
+        .loading {
+            display: none;
+            text-align: center;
+            font-style: italic;
+            color: #ff0;
+        }
+        .label {
+            font-weight: bold;
+            display: block;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="chat-container">
+        <h2>🙋‍♂️Hi! It's me *ChaturBot*</h2>
+        <h3>💬How can i help You</h3>
+        <div class="messages" id="messages"></div>
+        <div class="loading" id="loading">⏳ Thinking...</div>
+        <div class="input-container">
+            <input type="text" id="userInput" placeholder="Type a message...">
+            <button onclick="sendMessage()">Send</button>
+        </div>
+    </div>
+
+    <script>
+    async function sendMessage() {
+        const userInput = document.getElementById("userInput").value.trim();
+        if (!userInput) return;
+
+        const messagesDiv = document.getElementById("messages");
+        const loadingDiv = document.getElementById("loading");
+
+        // Display user message with label
+        const userMessage = `<div class="message user-message">
+            <span class="label">You:</span> ${userInput}
+        </div>`;
+        messagesDiv.innerHTML += userMessage;
+        document.getElementById("userInput").value = "";
+
+        // Show loading animation
+        loadingDiv.style.display = "block";
+
+        try {
+            const response = await fetch("http://127.0.0.1:5002/chat", {
+                method: "POST",
+                headers: { "Content-Type": "application/json" },
+                body: JSON.stringify({ message: userInput }),
+            });
+
+            if (!response.ok) throw new Error(`HTTP error! Status: ${response.status}`);
+
+            const data = await response.json();
+            const formattedResponse = formatBotResponse(data.response);
+
+            // Hide loading animation
+            loadingDiv.style.display = "none";
+
+            // Display bot message with label
+            const botMessage = `<div class="message bot-message">
+                <span class="label">ChaturBot:</span> ${formattedResponse}
+            </div>`;
+            messagesDiv.innerHTML += botMessage;
+            messagesDiv.scrollTop = messagesDiv.scrollHeight;
+        } catch (error) {
+            messagesDiv.innerHTML += `<div class="message bot-message">
+                <span class="label">Bot:</span> ❌ Error fetching response.
+            </div>`;
+            console.error("Fetch error:", error);
+        }
+    }
+
+    function formatBotResponse(response) {
+        // Convert response to a readable format
+        return response
+            .replace(/\*\*(.*?)\*\*/g, "<strong>$1</strong>") // Convert **bold** to <strong>
+            .replace(/\*(.*?)\*/g, "<em>$1</em>") // Convert *italic* to <em>
+            .replace(/\n/g, "<br>"); // New lines to HTML line breaks
+    }
+    </script>
+
+</body>
+</html>

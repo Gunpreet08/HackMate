@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Code Editor - Daily Challenge</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Source+Code+Pro:wght@400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.2/codemirror.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.2/theme/dracula.min.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.6/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-4Q6Gf2aSP4eDXB8Miphtr37CMZZQ5oXLH2yaXMJ2w8e2ZtHTl7GptT4jmndRuHDT" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.6/dist/js/bootstrap.bundle.min.js" integrity="sha384-j1CDi7MgGQ12Z7Qab0qlWQ/Qqz24Gc6BM0thvEMVjHnfYGF0rmFCozFSxQBxwHKO" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="codemirror-5.65.19/lib/codemirror.css">
+    <script src="codemirror-5.65.19/mode/python/python.js"></script>
+
+    <script src="codemirror-5.65.19/lib/codemirror.js"></script>
+    <script src="codemirror-5.65.19/mode/clike/clike.js"></script>
+    <link rel="stylesheet" href="codemirror-5.65.19/theme/dracula.css">
+    <script src="codemirror-5.65.19/addon/edit/closebrackets.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.min.css">
+    
+    <!-- Link to Font Awesome for icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    <!-- Link to the styled popup CSS -->
+    <link rel="stylesheet" href="../dashboardfull/popup.css">
+</head>
+<body>
+    <!-- Include the styled popup JS -->
+    <script src="../dashboardfull/popup.js"></script>
+
+    <nav class="navbar">
+        <div class="nav-left">
+            <img src="image/hm.jpg" alt="Logo"> <!-- Placeholder Logo -->
+            <span class="logo">HackMate</span>
+        </div>
+        <div class="nav-right">
+            <a href="http://localhost:5000/dashboardfull/dashboard.html">Home</a>
+            <!-- <a href="index.html" class="active">Practice</a> -->
+            <a href="http://localhost:5000/competitions/competitions.html">Hackathons</a>
+            <a href="#" id="puzzle-btn">Daily Puzzle</a>
+        </div>
+    </nav>
+    <div class="main-container">
+        <div class="practice-section">
+            <!-- Problem of the Day -->
+            <div class="problem-of-day">
+                <div class="problem-of-day-header">
+                    PROBLEM OF THE DAY
+                </div>
+                <div class="problem-content">
+                    <div class="problem-info">
+                        <h3 id="daily-challenge-title">Loading...</h3>
+                        <div class="problem-meta">
+                            <span class="difficulty-badge easy">Easy</span>
+                        </div>
+                    </div>
+                    <div class="problem-actions">
+                        <button class="start-now-btn">Start Now</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Challenge Interface -->
+            <div class="container-fluid">
+            <div class="row ">
+                <!-- problem section -->
+                <div class="col-md-5 problem-section">
+                    <div class="problem-description" id="problem-description">
+                        <!-- Problem content here -->
+                    </div>
+                    <div class="example-cases" id="example-cases">
+                        <!-- Examples here -->
+                    </div>
+                </div>
+                <!-- editor section -->
+                
+                    <div id="editor-section-container" class="col-md-7 editor-section d-flex flex-column" style="height: 100vh;">
+                        <div class="d-flex justify-content-between mb-2 rounded p-2" style="background-color: rgba(255, 240, 250, 0.9); height: 1.5cm;">
+                            <!-- <div class="d-flex justify-content-between mb-2 rounded p-2"> -->
+                            <div class="editor-controls">
+                                <label class="visually-hidden" for="inlineFormSelectPref">Preference</label>
+                                <select class="form-select" id="inlineFormSelectPref">
+                                    <option selected>Choose...</option>
+                                    <option value="Java">Java</option>
+                                    <option value="Cpp">Cpp</option>
+                                    <option value="Python">Python</option>
+                                </select>
+                            </div>
+                            <div class="timer-container">
+                                <div class="timer" id="question-timer">
+                                    <i class="material-icons">timer</i>
+                                    <span id="timer-display">30:00</span>
+                                    <div class="timer-controls">
+                                        <button id="pause-timer" class="timer-control-btn" data-state="running">
+                                            <i class="material-icons pause-icon">pause</i>
+                                            <i class="material-icons resume-icon" style="display: none;">play_arrow</i>
+                                        </button>
+                                        <button id="stop-timer" class="timer-control-btn">
+                                            <i class="material-icons">stop</i>
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="editor-buttons">
+                                <button type="button" id="run" class="btn btn-success">Run Tests</button>
+                                <button id="reset-code" class="btn btn-secondary">Reset Code</button>
+                            </div>
+                        </div>
+                        <div class="flex-grow-1 mb-2">
+                            <textarea type="text" id="editor" class="form-control h-100" aria-label="First name"></textarea>
+                        </div>
+
+                        <div class="d-flex gap-2" style="height: 200px;">
+                            <div class="w-50 d-flex flex-column rounded p-2" style="background-color: rgba(255, 240, 250, 0.9);">
+                                <label for="input">Input</label>
+                                <textarea id="input" class="form-control bg-dark text-light flex-grow-1"></textarea>
+                            </div>
+                            <div class="w-50 d-flex flex-column  rounded p-2" style="background-color: rgba(255, 240, 250, 0.9);">
+                                <label for="output">Output</label>
+                                <textarea id="output" class="form-control bg-dark text-light flex-grow-1"></textarea>
+                            </div>
+                        </div>
+                    </div>                    
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Puzzle Modal -->
+    <div id="puzzle-modal" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <div class="puzzle-header">
+                <h2 id="puzzle-title">Daily Puzzle</h2>
+                <div class="points-display">
+                    <span class="material-icons">stars</span>
+                    <span id="total-points">0</span> points
+                </div>
+                <button id="reset-points" class="btn btn-reset">Reset Progress</button>
+                <div id="points-notification" class="points-notification hidden">-2 points for hint</div>
+            </div>
+            <div class="puzzle-body">
+                <p id="puzzle-description"></p>
+                <div id="puzzle-options" class="puzzle-options"></div>
+            </div>
+            <div class="hint-section">
+                <button id="show-hint" class="btn btn-hint">Show Hint</button>
+                <p id="hint-text" class="hint-text hidden"></p>
+            </div>
+            <div id="puzzle-result" class="puzzle-result hidden">
+                <div id="result-message"></div>
+                <button id="next-puzzle" class="btn btn-submit">Next Puzzle</button>
+            </div>
+        </div>
+    </div>
+
+            
+<!-- Scripts -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.2/codemirror.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.2/mode/javascript/javascript.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.2/mode/python/python.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.2/mode/clike/clike.min.js"></script>
+    <script src="puzzles.js"></script>
+    <script src="script.js"></script>
+
+</body>
+</html>

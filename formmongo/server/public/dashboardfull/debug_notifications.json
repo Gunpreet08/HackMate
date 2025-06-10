@@ -1,0 +1,12 @@
+[
+  {
+    "type": "team_invitation",
+    "message": "You have been invited to join team hhh",
+    "invitationId": "abc"
+  },
+  {
+    "type": "team_invitation",
+    "message": "anshika pahwa has invited you to join team hhh",
+    "invitationId": "def"
+  }
+]

@@ -1,0 +1,27 @@
+.faq {
+    max-width: 700px;
+    margin: 20px auto;
+    padding: 20px;
+    background: #142F30;
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(244, 169, 195, 0.2);
+}
+
+.question {
+    padding: 15px;
+    border-bottom: 1px solid #F4A9C3;
+    transition: all 0.3s ease-in-out;
+    cursor: pointer;
+}
+
+.question:hover {
+    background: rgba(244, 169, 195, 0.1);
+    transform: scale(1.02);
+}
+
+@media (max-width: 768px) {
+    .faq {
+        width: 90%;
+        padding: 10px;
+    }
+}

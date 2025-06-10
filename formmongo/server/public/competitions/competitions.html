@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Competitions - HackMate</title>
+    <link rel="stylesheet" href="competitions.css">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Source+Code+Pro:wght@400;500;600&display=swap" rel="stylesheet">
+</head>
+<body>
+    <nav class="navbar">
+        <div class="nav-left">
+            <img src="hm.jpg" alt="Logo"> <!-- Placeholder Logo -->
+            <span class="logo">HackMate</span>
+        </div>
+        <!-- <div class="nav-left">
+            <span class="logo">HackMate</span>
+        </div> -->
+        <div class="nav-right">
+            <a href="../dashboardfull/dashboard.html">Home</a>
+            <a href="../code editor/index.html">Practice</a>
+            <a href="competitions.html" class="active">Hackathons</a>
+            <!-- <a href="#" id="puzzle-btn">Daily Puzzle</a> -->
+        </div>
+    </nav>
+
+    <div class="main-container">
+        <h1 class="page-title">HACKATHONS</h1>
+        
+         <!-- <div class="tabs-container">
+            <div class="tab active" >LIVE</div>
+            <div class="tab active" >UPCOMING</div>
+            <div class="tab">PREVIOUS</div>
+         </div>   -->
+        <div id="filter-bar-mount"></div>
+        <div class="cards-container" id="hackathon-cards">
+            <!-- Cards will be inserted here by JS -->
+        </div>
+
+
+        <div class="competitions-grid">
+            <!-- Hackathons will be dynamically inserted here -->
+        </div>
+    </div>
+
+    <script src="competitions.js"></script>
+</body>
+</html> 

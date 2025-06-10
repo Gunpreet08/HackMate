@@ -1,0 +1,358 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hackathon Site</title>
+    <link rel="stylesheet" href="indexpinkstyle.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.min.css">
+  </head>
+<body >
+    
+    <!-- Navbar -->
+    <nav class="navbar">
+        <div class="logo">
+            <img src="pink/hm.jpg" alt="Logo"> <!-- Placeholder Logo -->
+            <span>HackMate</span>
+        </div>
+        <div class="nav-links">
+            <a href="#">Home</a>
+            <a href="#about-section">About Us</a>
+            <a href="#features-section">Features</a>
+            <a href="hackathon-roadmap.html">Roadmap</a>
+            <a href="#contact">Contact</a>
+            <a href="formmongo/server/public/login.html">Login/Signup</a>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-content">
+            <h1>Find. Prepare. Win ! </h1>
+            <p>Simplify your hackathon journey— find teammates, get notified of events, chat live, and prepare with all the resources you need to succeed</p>
+            <a href="formmongo/server/public/form.html" class="btn">Get Started</a>
+        </div>
+        <!-- <div class="ticker-container"> -->
+            <div class="hackathon-ticker">
+                <ul id="hackathon-list">
+                    <li class="loading">⏳ Loading hackathons...</li>
+                </ul>  
+            </div>        
+        
+        <script>
+            document.addEventListener("DOMContentLoaded", function () {
+            let tickerList = document.getElementById("hackathon-list");
+    
+            // ✅ Start animation immediately with dummy data
+            tickerList.innerHTML = `<li>🔄 Fetching hackathons...</li>
+                <li>🎯 Stay tuned for upcoming events!</li>
+                <li>🚀 Preparing hackathons list...</li>`; 
+
+                startTickerAnimation(); // Start animation immediately
+
+            // ✅ Make the entire ticker clickable
+            tickerList.addEventListener("click", function () {
+                window.location.href = "/formmongo/server/public/login.html";
+            });
+
+            // fetch fresh data
+            fetch("http://127.0.0.1:5000/api/hackathons")
+                .then(response => response.json())
+                .then(data => {
+                    tickerList.innerHTML = ""; //Remove placeholder
+
+                    // Create original hackathons list
+                    let allItems ="";
+                    data.forEach(hackathon => {
+                        // Format date (optional: make it more readable)
+                        let startDate = new Date(hackathon.date).toLocaleDateString("en-US", {
+                        weekday: "short",
+                        month: "short",
+                        day: "2-digit",
+                        year: "numeric"
+                    });
+
+                    allItems += `<li class="colon"><a href="${hackathon.url}" target="_blank">${hackathon.name}</a> - <span class="date">${startDate}</span></li>`;
+                });
+                // ✅ Duplicate the list to create an infinite effect
+                tickerList.innerHTML = allItems + allItems;
+            })
+            .catch(error =>{
+                console.error("Error fetching hackathons:", error);
+                tickerList.innerHTML = `<li class="error">⚠️ Failed to load hackathons. Please try again.</li>`;
+            });       
+        });
+
+// ✅ Function to start animation dynamically
+function startTickerAnimation() {
+    let ticker = document.querySelector(".ticker ul");
+
+    if (ticker) {
+        let styleSheet = document.createElement("style");
+        styleSheet.innerHTML = `
+            @keyframes ticker-scroll {
+                from { transform: translateY(0%); }
+                to { transform: translateY(-50%); }
+                //to { transform: translateY(-${ticker.scrollWidth}px); }
+            }
+            .ticker ul {
+                display: block;
+                animation: ticker-scroll 25s linear infinite;
+            }
+        `;
+        document.head.appendChild(styleSheet);
+    }
+}
+</script>
+</section>
+   
+    
+    <!-- features section -->
+
+    <section id="features-section">
+        <h2 class="features-title">
+            🚀 Explore <span>HackMate's Powerful Features</span> 🚀
+        </h2>
+        <div class="features-grid">
+            <div class="feature-card">
+                <div class="feature-image">
+                <img src="pink/u.jpg"></div>
+                <h3>User Registration and Authentication</h3>
+                <p><strong>Allows users to register and log in securely.</strong></p>
+                
+            </div>
+            <div class="feature-card">
+                <div class="feature-image">
+                <img src="pink/matchfoundfinal-Photoroom.jpg" ></div>
+                <h3>Matchmaking Module</h3>
+                <p><strong>Matches participants based on their skills and preferences to form balanced teams.</strong></p>
+                
+            </div>
+            <div class="feature-card">
+                <div class="feature-image"><img src="pink/noti.png" alt="notification"></div>
+                <h3>Connection Notification System</h3>
+                <p><strong>Sends timely notifications about team connections and update teams.</strong></p>
+                
+            </div>
+            <div class="feature-card">
+                <div class="feature-image"><img src="pink/realtimemessaging.webp" alt="RTM"></div>
+                <h3>Real-Time Messaging System</h3>
+                <p><strong>Real-time chat between users</strong></p>
+                
+            </div>
+            <div class="feature-card">
+                <div class="feature-image"><img src="pink/listing.jpg" alt=""></div>
+                <h3>Hackathon Listings and Applications</h3>
+                <p><strong>A list of upcoming hackathons and allows users to apply for them.</strong></p>
+                
+            </div>
+            <div class="feature-card">
+                <div class="feature-image"><img src="pink/AI chatbot assistance.webp" alt=""></div>
+                <h3>AI-Powered Hackathon Guidance</h3>
+                <p><strong>Chat with our AI bot for insights, tips, and a personalized hackathon prep checklist</strong></p>
+            </div>
+            <!-- <div class="feature-card">
+                <div class="feature-image"><img src="pink/roadmap.png" alt="Hackathon Roadmap"></div>
+                <h3>Interactive Hackathon Roadmap</h3>
+                <p><strong>Step-by-step guide to navigate your hackathon journey successfully</strong></p>
+                <a href="hackathon-roadmap.html" class="feature-btn">View Roadmap</a>
+            </div> -->
+        </div>
+    </section>
+
+    <h1 style="color:#ff95cd;text-align:center ;font-size:2.5rem;">"How It Works: Navigate HackMate in Simple Steps" 🚀</h1>
+
+   <!-- how it works -->
+   <section class="how-it-works">
+    <section class="process-section">
+        <div class="process-step">
+            <div class="step-number num-1">01</div>
+            <h2>Sign Up</h2>
+            <p>Create your Hackmate account and set up your profile to get started </p>
+        </div>
+        <div class="process-step">
+            <div class="step-number num-2">02</div>
+            <h2> Hackathons</h2>
+            <p>Browse through recent and upcoming hackathons and choose the one that excites you.</p>
+        </div>
+        <div class="process-step">
+            <div class="step-number num-3">03</div>
+            <h2>Find your team</h2>
+            <p> Connect with like-minded innovators and build your perfect squad.</p>
+        </div>
+        <div class="process-step">
+            <div class="step-number num-4">04</div>
+            <h2>Apply & get started </h2>
+            <p> Register for the hackathon and collaborate in real-time using our messaging platform. </p>
+        </div>
+    </section>
+</section>
+
+<section id="about-section">
+    <div class="about-content">
+        <h2>About <span> HackMate's Team</span></h2>
+        <br>
+        <p>We are a passionate team dedicated to bringing innovators together. HackMate helps hackers connect, build teams, and compete in thrilling hackathons worldwide.</p>
+       <br> <p id="simp">HackMate started as a small idea and has grown into something much bigger—our dream and commitment to the hackathon community. Built from scratch without any institutional backing, it’s the result of our dedication, late nights, and hard work. We know we’re not perfect, and there may be bumps along the way, but every challenge pushes us to do better.Thank you for your patience and support as we continue to grow.
+            This is just the beginning. ❤🚀</p>
+    </div>
+    <div class="about-images">
+        <div class="collage">
+            <img src="pink/anshi2.jpeg" alt="Team Collaboration">
+            <img src="pink/gun.jpeg" alt="Hackathon Planning">
+            <img src="pink/cofounders.jpeg" alt="Developers at Work">
+            <img src="pink/us5.jpg" alt="Team Brainstorming">
+        </div>
+    </div>
+</section>
+
+
+    <!-- Footer Section -->
+ <!-- Footer Section -->
+ <section id="contact">
+    <footer class="footer">
+        <div class="footer-container">
+            <div class="footer-logo">
+                <h3>HackMate</h2>
+                <p>Connecting innovators worldwide.</p>
+                <pre>Simplify your hackathon journey— find teammates, get notified of 
+events, chat live, and prepare with all the resources you need
+to succeed</pre>
+            </div>
+    
+                <div class="links-column">
+                    <h3>Quick Links</h3>
+                    <ul>
+                        <li><a href="#">Home</a></li>
+                        <li><a href="#features-section">Features</a></li>
+                        <li><a href="#about-section">About Us</a></li>
+                        <li><a href="FAQ.html">FAQs</a></li>
+                        <!-- <li><a href="#contact">Contact</a></li> -->
+                    </ul>
+                </div>
+            
+            <div class="footer-form">
+                <h3>Contact Us</h3>
+                    <p>Anshika Pahwa : <a href="tel:+918054432979">+91 8054432979</a></p>
+                    <p>Gunpreet Kaur : <a href="tel:+8284032063">+91 8284032063</a></p>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2025 HackMate. All rights reserved.</p>
+        </div>
+    </footer>
+</section>
+
+<!-- Floating Chatbot Icon & Button -->
+<div id="chatbot-float-group" style="position: fixed; bottom: 30px; right: 30px; z-index: 9999; display: flex; align-items: center; gap: 12px;">
+    <div class="chatbot-wrapper">
+        <div id="chatbot-float-btn" style="background: #00F5D4; border-radius: 50%; width: 54px; height: 54px; box-shadow: 0 2px 8px rgba(0,0,0,0.22); display: flex; align-items: center; justify-content: center; cursor: pointer; border: 3px solid #fff;">
+            <i class="bi bi-robot" style="font-size: 2rem;"></i>
+        </div>
+        <div class="chatbot-tooltip">Talk to Chaturbot</div>
+    </div>
+</div>
+  <!-- <svg width="30" height="30" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <circle cx="12" cy="12" r="12" fill="white"/>
+    <path d="M7 10.5C7 9.11929 8.11929 8 9.5 8H14.5C15.8807 8 17 9.11929 17 10.5V13.5C17 14.8807 15.8807 16 14.5 16H10.4142C10.149 16 9.89464 16.1054 9.70711 16.2929L8.35355 17.6464C7.96086 18.0391 7.32843 17.9024 7.12132 17.4142C7.0426 17.2356 7 17.0408 7 16.8431V10.5Z" fill="#c20f86"/>
+  </svg> -->
+    
+    <!-- <button id="chatbot-float-talk" style="background: #fff; color: #00F5D4; border: none; border-radius: 24px; padding: 10px 22px 10px 22px; font-size: 1.08em; font-weight: bold; box-shadow: 0 2px 8px rgba(0,0,0,0.11); cursor: pointer; transition: background 0.2s;">
+    Talk to ChaturBot
+    </button> -->
+
+
+<!-- Chatbot Modal/Chatbox -->
+<div id="chatbot-modal" style="display:none; position: fixed; bottom: 100px; right: 40px; z-index: 10000; background: #14323f; border-radius: 16px; box-shadow: 0 4px 24px rgba(0,0,0,0.2); padding: 0; width: 340px; max-width: 95vw; color: #fff; font-family: 'Segoe UI', Arial, sans-serif;">
+  <div style="background: #14323f; border-radius: 16px 16px 0 0; padding: 16px 18px 10px 18px; text-align: center;">
+  <span style="font-size: 1.4em; font-weight: bold; color: #ffb6e6; letter-spacing:0.5px;">ChaturBot</span>
+</div>
+  <div id="chatbot-messages" style="background: #fff; color: #222; margin: 0 18px 0 18px; border-radius: 8px; min-height: 120px; height: 140px; max-height: 140px; overflow-y: auto; padding: 12px 8px 8px 8px; font-size: 1em; margin-bottom: 4px;"></div>
+  <form id="chatbot-form" autocomplete="off" style="display: flex; gap: 8px; align-items: center; background: #14323f; padding: 10px 18px 8px 18px; border-radius: 0 0 16px 16px;">
+    <input id="chatbot-input" type="text" placeholder="Type a message..." style="flex:1; border-radius: 6px; border: none; padding: 8px 10px; font-size: 1em; outline: none;" maxlength="200" autocomplete="off" />
+    <button id="chatbot-send" type="submit" style="background: #00F5D4; color: #14323f; border: none; border-radius: 6px; padding: 8px 18px; font-weight: bold; font-size: 1em; cursor: pointer;">Send</button>
+  </form>
+  <div id="chatbot-limit-msg" style="text-align:center; color:#ffb6e6; font-size:0.95em; margin-bottom: 8px;">5 free chats per visitor</div>
+  <button id="chatbot-close-btn" style="position: absolute; top: 10px; right: 16px; background: none; border: none; color: #fff; font-size: 1.3em; cursor: pointer;">&times;</button>
+</div>
+
+<script>
+const chatbotBtn = document.getElementById('chatbot-float-btn');
+const chatbotTalkBtn = document.getElementById('chatbot-float-talk');
+const chatbotModal = document.getElementById('chatbot-modal');
+const chatbotClose = document.getElementById('chatbot-close-btn');
+const chatbotForm = document.getElementById('chatbot-form');
+const chatbotInput = document.getElementById('chatbot-input');
+const chatbotSend = document.getElementById('chatbot-send');
+const chatbotMessages = document.getElementById('chatbot-messages');
+const chatbotLimitMsg = document.getElementById('chatbot-limit-msg');
+
+document.getElementById("chatbot-close-btn").addEventListener("click", function () {
+    document.getElementById("chatbot-modal").style.display = "none";
+  });
+// Show modal on icon or button click
+function openChaturModal() {
+  chatbotModal.style.display = 'block';
+  chatbotInput.focus();
+}
+chatbotBtn.onclick = openChaturModal;
+chatbotTalkBtn.onclick = openChaturModal;
+chatbotClose.onclick = () => {
+  chatbotModal.style.display = 'none';
+}
+
+// Helper: Add message to chat
+function addChatMsg(sender, text) {
+  const msgDiv = document.createElement('div');
+  msgDiv.style.marginBottom = '8px';
+  msgDiv.innerHTML = `<b style='color:${sender==='You'?"#c20f86":"#00F5D4"}'>${sender}:</b> ${text}`;
+  chatbotMessages.appendChild(msgDiv);
+  chatbotMessages.scrollTop = chatbotMessages.scrollHeight;
+}
+
+// Helper: Simple bot reply
+function botReply(userMsg) {
+  // You can customize this logic or make it random
+  if (/hello|hi|hey/i.test(userMsg)) return "Hello! How can I help you today?";
+  if (/hackathon/i.test(userMsg)) return "I can help you find hackathons, tips, and resources. Ask me anything!";
+  if (/team/i.test(userMsg)) return "Looking for teammates? Try our team-matching feature!";
+  if (/bye|thank/i.test(userMsg)) return "You're welcome! Let me know if you have more questions.";
+  return "I'm ChaturBot! Ask me about hackathons, teams, or anything else.";
+}
+
+function updateLimitUI(count) {
+  if (count >= 5) {
+    chatbotInput.disabled = true;
+    chatbotSend.disabled = true;
+    chatbotInput.placeholder = "Login to continue...";
+    chatbotLimitMsg.innerHTML = `⚠️ Free chats used. <a href='formmongo/server/public/login.html' style='color:#c20f86;font-weight:bold;'>Login</a> for unlimited access.`;
+  } else {
+    chatbotInput.disabled = false;
+    chatbotSend.disabled = false;
+    chatbotInput.placeholder = "Type a message...";
+    chatbotLimitMsg.textContent = `${5-count} free chats left`;
+  }
+}
+
+// Initialize chat limit
+let freeChats = parseInt(localStorage.getItem('chaturbot_free_chats') || '0');
+updateLimitUI(freeChats);
+// No pre-filled bot message, keep chat area empty
+
+chatbotForm.onsubmit = function(e) {
+  e.preventDefault();
+  let msg = chatbotInput.value.trim();
+  if (!msg || freeChats >= 5) return;
+  addChatMsg('You', msg);
+  chatbotInput.value = '';
+  setTimeout(() => {
+    addChatMsg('ChaturBot', botReply(msg));
+  }, 500);
+  freeChats++;
+  localStorage.setItem('chaturbot_free_chats', freeChats);
+  updateLimitUI(freeChats);
+}
+</script>
+
+</body>
+</html>

@@ -1,0 +1,136 @@
+
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <title>HackMate Signup</title>
+    <link rel="stylesheet" href="formstyles.css">
+</head>
+<body>
+    <div class="wrapper">
+        <div class="left-section">
+            <h1>Join HackMate</h1>
+            <p style="color: aqua">Find your perfect team, access essential resources, and manage your hackathon project seamlessly.</p>
+            <img src="pink/hm.jpeg" height="300px">
+            <p class="random">Already have an account?</p>
+            <button type="button" onclick="window.location.href='login.html';">Login Now</button>
+        </div>
+
+        <div class="right-section">
+            <form class="signup-form" id="signupForm"  >
+                <h2>Sign Up</h2>
+                <div class="progress-bar">
+                    <span class="step active">Basic Info</span>
+                    <span class="step">Skills & Experience</span>
+                    <span class="step">Collaboration</span>
+                    <span class="step">Social Links</span>
+                </div>
+
+                <!-- Basic Info -->
+                <div class="form-section">
+                    <label>Full Name *</label>
+                    <input type="text" name="fullName" placeholder="Enter Full Name" required  title="Full Name is a compulsory field">
+
+                    <label>Email Address *</label>
+                    <input type="email" id="email" name="email" placeholder="Enter your email" required oninput="checkEmailExists()" required title="Email is a compulsory field">
+                    <small id="emailError" style="color: red; display: none;"></small>                    
+
+                    <label>Password *</label>
+                    <input type="password" name="password" placeholder="Enter Password" required title="Password is a compulsory field">
+
+                    <label>Username *</label>
+                    <input type="text" name="username" placeholder="Choose a Username" required title="Username is a compulsory field">
+
+                    <label>Profile Picture</label>
+                    <input type="file" name="profilePicture" id="profilePicture" accept="image/*">
+                    <img id="previewImage" src="" alt="Profile Preview" style="display:none; width: 100px; height: 100px; border-radius: 20%; margin-top: 10px;">
+
+                    <label>Location *</label>
+                    <input type="text" name="location" placeholder="City, Country" required title="Location is a compulsory field">
+                </div>
+
+                <!-- Skills & Experience -->
+                <div class="form-section">
+                    <label>Primary Role</label>
+                    <select name="primaryRole">
+                        <option>Frontend Developer</option>
+                        <option>Backend Developer</option>
+                        <option>Full-Stack Developer</option>
+                        <option>Designer</option>
+                        <option>Data Scientist</option>
+                        <option>AI/ML</option>
+                        <option>Cybersecurity</option>
+                    </select>
+
+                    <label>Tech Stack *</label>
+                    <input type="text" name="techStack" placeholder="Enter Tech Stack (e.g., React, Node.js, Python)" required title="Tech Stack is a compulsory field">
+
+                    <label>Experience Level</label>
+                    <select name="experienceLevel">
+                        <option>Beginner</option>
+                        <option>Intermediate</option>
+                        <option>Advanced</option>
+                    </select>
+
+                    <label>Past Hackathon Experience</label>
+                    <select name="pastHackathonExperience">
+                        <option>Yes</option>
+                        <option>No</option>
+                    </select>
+
+                    <label>Project Interests *</label>
+                    <input type="text" name="projectInterests" placeholder="AI, Web3, Blockchain, Fintech, EdTech, etc." required title="Project Interests is a compulsory field">
+                </div>
+
+                <!-- Collaboration Preferences -->
+                <div class="form-section">
+                    <label>Preferred Team Size</label>
+                    <select name="preferredTeamSize">
+                        <option>Small (2-3)</option>
+                        <option>Medium (4-6)</option>
+                        <option>Large (7+)</option>
+                    </select>
+
+                    <label>Work Style</label>
+                    <input type="text" name="workStyle" placeholder="Hands-on coding, ideation, mentoring">
+
+                    <label>Availability for Hackathons</label>
+                    <select name="availability">
+                        <option>Weekends</option>
+                        <option>Full-time</option>
+                        <option>Flexible</option>
+                    </select>
+
+                    <label>Preferred Hackathon Type</label>
+                    <select name="preferredHackathonType">
+                        <option>In-person</option>
+                        <option>Online</option>
+                        <option>Hybrid</option>
+                    </select>
+                </div>
+
+                <!-- Social Links -->
+                <div class="form-section">
+                    <label>GitHub</label>
+                    <input type="url" name="github" placeholder="GitHub Profile Link">
+
+                    <label>LinkedIn</label>
+                    <input type="url" name="linkedin" placeholder="LinkedIn Profile Link">
+
+                    <label>Personal Website/Portfolio</label>
+                    <input type="url" name="portfolio" placeholder="Website/Portfolio URL">
+                </div>
+
+                <div class="buttons">
+                    <button type="button" id="prevBtn" onclick="nextPrev(-1)">Previous</button>
+                    <button type="button" id="nextBtn" onclick="nextPrev(1)">Next</button>
+                    <button type="submit" id="submitBtn">Submit</button>
+                </div>
+            </form>
+        </div>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>

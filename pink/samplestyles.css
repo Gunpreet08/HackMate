@@ -1,0 +1,101 @@
+/* General Styles */
+body {
+    font-family: Arial, sans-serif;
+    background: linear-gradient(135deg, #F4A9C3, #A1E5D9);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+}
+
+/* Container */
+.container {
+    display: flex;
+    width: 900px;
+    box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.2);
+    border-radius: 12px;
+    overflow: hidden;
+    background: white;
+}
+
+/* Left Section */
+.info-section {
+    flex: 1;
+    padding: 40px;
+    background: #814C61;
+    color: white;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+}
+
+.info-section h1 {
+    font-size: 28px;
+    margin-bottom: 10px;
+}
+
+.social-icons a {
+    display: inline-block;
+    color: white;
+    text-decoration: none;
+    margin: 5px;
+    font-size: 16px;
+}
+
+/* Right Section */
+.form-section {
+    flex: 1;
+    padding: 30px;
+    background: rgba(255, 255, 255, 0.9);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+}
+
+.form-section h2 {
+    font-size: 24px;
+    margin-bottom: 15px;
+}
+
+/* Form Inputs */
+form {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+input, select, textarea {
+    width: 80%;
+    padding: 10px;
+    margin: 8px 0;
+    border: 2px solid #00F5D4;
+    border-radius: 5px;
+}
+
+textarea {
+    height: 60px;
+    resize: none;
+}
+
+/* Buttons */
+button {
+    background-color: #00F5D4;
+    color: #4B1D3F;
+    border: none;
+    padding: 12px 20px;
+    cursor: pointer;
+    border-radius: 10px;
+    transition: 0.3s;
+    font-weight: bold;
+}
+
+button:hover {
+    background-color: #6BAAA8;
+}
+

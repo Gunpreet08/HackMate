@@ -1,0 +1,609 @@
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 1000;
+    left: 0;
+    top: 0;
+    width: 100vw;
+    height: 100vh;
+    overflow: auto;
+    background: rgba(0,0,0,0.25);
+    justify-content: center;
+    align-items: center;
+}
+.modal-content {
+    background: #fff;
+    margin: 60px auto;
+    padding: 32px 28px 22px 28px;
+    border-radius: 18px;
+    box-shadow: 0 4px 32px rgba(0,0,0,0.14);
+    max-width: 400px;
+    width: 95%;
+    position: relative;
+    animation: modalFadeIn 0.22s;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+@keyframes modalFadeIn {
+    from { opacity: 0; transform: translateY(40px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+.close {
+    position: absolute;
+    top: 10px;
+    right: 18px;
+    font-size: 2rem;
+    color: #888;
+    cursor: pointer;
+    font-weight: 700;
+    transition: color 0.2s;
+}
+.close:hover {
+    color: #e11d48;
+}
+#hackathon-form label, #challenge-form label {
+    display: block;
+    font-weight: 500;
+    margin-top: 10px;
+    margin-bottom: 4px;
+    color: #009688;
+}
+
+#challenge-form {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+}
+#challenge-form input[type="text"],
+#challenge-form input[type="number"],
+#challenge-form input[type="date"],
+#challenge-form input[type="url"],
+#challenge-form textarea,
+#challenge-form select {
+    width: 100%;
+    padding: 8px 10px;
+    border: 1px solid #bae6fd;
+    border-radius: 7px;
+    margin-bottom: 6px;
+    font-size: 1rem;
+    background: #f1f5f9;
+    transition: border 0.2s;
+    resize: vertical;
+}
+#challenge-form input:focus, #challenge-yyyform textarea:focus, #challenge-form select:focus {
+    border: 1.5px solid #009688;
+    outline: none;
+    background: #e0f2fe;
+}
+#challenge-form textarea {
+    min-height: 60px;
+    max-height: 180px;
+}
+#challenge-form .form-row {
+    display: flex;
+    gap: 10px;
+    align-items: center;
+}
+#challenge-form .form-row > * {
+    flex: 1;
+}
+#challenge-form .checkbox-row {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-top: 5px;
+}
+#challenge-form .generate-hackathon-btn[type="submit"] {
+    background: linear-gradient(90deg, #009688 0%, #f9a8d4 100%);
+    color: #fff;
+    border: none;
+    padding: 8px 22px;
+    border-radius: 8px;
+    font-size: 1rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background 0.18s;
+}
+#challenge-form .generate-hackathon-btn[type="submit"]:hover {
+    background: linear-gradient(90deg, #f9a8d4 0%, #009688 100%);
+    color: #009688;
+}
+#challenge-form .generate-hackathon-btn[type=".generate-hackathon-btn"] {
+    background: #f1f5f9;
+    color: #009688;
+    border: 1px solid #bae6fd;
+    padding: 8px 18px;
+    border-radius: 8px;
+    font-size: 1rem;
+    font-weight: 500;
+    cursor: pointer;
+    margin-right: 8px;
+    transition: background 0.18s, color 0.18s;
+}
+#challenge-form .generate-hackathon-btn[type=".generate-hackathon-btn"]:hover {
+    background: #bae6fd;
+    color: #e11d48;
+}
+#challenge-form-error {
+    color: #e11d48;
+    margin-top: 8px;
+    font-size: 0.98rem;
+    text-align: left;
+}
+@media (max-width: 600px) {
+    .modal-content {
+        max-width: 98vw;
+        padding: 16px 4vw 12px 4vw;
+    }
+    #challenge-form label, #hackathon-form label {
+        font-size: 1rem;
+    }
+    #challenge-form input, #challenge-form textarea, #challenge-form select {
+        font-size: 0.98rem;
+    }
+}
+    /* display: block;
+    font-weight: 500;
+    margin-top: 10px;
+    margin-bottom: 4px;
+    color: #009688;
+} */
+#hackathon-form input[type="text"],
+#hackathon-form input[type="date"],
+#hackathon-form input[type="url"] {
+    width: 100%;
+    padding: 8px 10px;
+    border: 1px solid #bae6fd;
+    border-radius: 7px;
+    margin-bottom: 6px;
+    font-size: 1rem;
+    background: #f1f5f9;
+    transition: border 0.2s;
+}
+#hackathon-form input:focus {
+    border: 1.5px solid #009688;
+    outline: none;
+    background: #e0f2fe;
+}
+#hackathon-form .generate-hackathon-btn[type="submit"] {
+    background: linear-gradient(90deg, #009688 0%, #f9a8d4 100%);
+    color: #fff;
+    border: none;
+    padding: 8px 22px;
+    border-radius: 8px;
+    font-size: 1rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background 0.18s;
+}
+#hackathon-form .generate-hackathon-btn[type="submit"]:hover {
+    background: linear-gradient(90deg, #f9a8d4 0%, #009688 100%);
+    color: #009688;
+}
+#hackathon-form .generate-hackathon-btn[type=".generate-hackathon-btn"] {
+    background: #f1f5f9;
+    color: #009688;
+    border: 1px solid #bae6fd;
+    padding: 8px 18px;
+    border-radius: 8px;
+    font-size: 1rem;
+    font-weight: 500;
+    cursor: pointer;
+    margin-right: 8px;
+    transition: background 0.18s, color 0.18s;
+}
+#hackathon-form .generate-hackathon-btn[type=".generate-hackathon-btn"]:hover {
+    background: #bae6fd;
+    color: #e11d48;
+}
+#hackathon-form-error {
+    color: #e11d48;
+    font-size: 1rem;
+    margin-top: 8px;
+    min-height: 18px;
+    text-align: left;
+}
+
+body {
+    margin: 0;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background: linear-gradient(135deg, #dbeafe 0%, #f7f7fa 100%);
+    min-height: 100vh;
+}
+
+.nav-left {
+    display: flex;
+    align-items: center;
+    font-size: 20px;
+    font-weight: bold;
+}
+.nav-left img {
+    width: 50px;
+    height: 50px;
+    padding-left: 0 !important;
+    margin-left: 1cm !important;
+    margin-right: 10px;
+    border-radius: 50%;
+}
+.fa-sign-out-alt{
+    font-size: 25px;
+    color: white;
+}
+
+.admin-container {
+    display: flex;
+    min-height: 100vh;
+}
+.profile {
+    text-align: center;
+    color: #009688;
+    letter-spacing: 1px;
+    font-size: 1.5rem;
+    /* margin-bottom: 1cm; */
+}
+
+.profile img {
+    overflow: hidden; 
+    width: 100px;
+    height: 100px; /* Ensure height and width are equal for a perfect circle */
+    border-radius: 50%;
+    margin-bottom: 0;
+    background-color: #c55b80; /* Light pink background */
+    /* border: 5px solid #009688; Dark teal border   */
+}
+
+.sidebar {
+    height: 100vh;
+    top: 0;
+    left: 0;
+    background: linear-gradient(135deg, #074041 50%, #fc8ab0 100%) !important;
+    position: relative;
+    flex-shrink: 0;
+
+    color: #fff;
+    position: fixed;
+    width: 270px !important;
+    transition: width 0.3s;
+    z-index: 1000;
+    padding: 15px 0px;
+    box-shadow: 2px 0 8px rgba(0,0,0,0.08);
+    border-top-right-radius: 24px;
+    border-bottom-right-radius: 24px;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+}
+
+/* Hide home icon when sidebar is open */
+
+.sidebar h2 {
+    padding-top: 2cm;
+    color: black;
+    margin-top: 0;
+    font-size: 2rem;
+    margin-bottom: 2rem;
+    letter-spacing: 1px;
+    font-weight: 700;
+}
+
+.sidebar ul {
+    list-style: none;
+    padding: 0;
+}
+
+.sidebar ul li {
+    padding: 12px;
+    margin: 10px 0;
+    cursor: pointer;
+    background:#c55b80;
+    color: white;
+    border-radius: 8px;
+    transition: background 0.3s ease, transform 0.2s ease-in-out;
+    display: flex;
+    align-items: center;
+}
+
+.sidebar ul li i {
+    margin-right: 10px;
+}
+
+.sidebar ul li:hover {
+    background: #009688 ; /* Turquoise */
+    transform: scale(1.05);
+}
+.sidebar ul li a {
+    
+    color: white;
+    text-decoration: none;
+    margin-right: 10px;
+}
+
+.main-content {
+    flex: 1;
+    padding: 40px 0 40px 0;
+    background: none;
+    min-width: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    margin-left: 300px;
+    transition: margin-left 0.3s;
+}
+
+.admin-section {
+    width: 100%;
+    max-width: 900px;
+    margin: 0 auto;
+    display: none;
+}
+.admin-section:first-of-type {
+    display: block;
+}
+
+#user-table-container, #team-table-container, #hackathon-table-container, #challenge-table-container, #analytics-dashboard {
+    width: 100%;
+    background: #105c4f;
+    border-radius: 18px;
+    box-shadow: 0 4px 24px 0 rgba(0,0,0,0.08);
+    padding: 18px 18px 18px 18px;
+    margin-top: 18px;
+    overflow-x: auto;
+}
+
+.admin-table {
+    width: 100%;
+    min-width: 600px;
+    border-collapse: separate;
+    border-spacing: 0;
+    background: #f8fafc;
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 2px 18px 0 rgba(236, 72, 153, 0.04);
+    margin-bottom: 18px;
+}
+
+@media (max-width: 800px) {
+    #user-table-container, #team-table-container, #hackathon-table-container, #challenge-table-container, #analytics-dashboard {
+        padding: 8px 2px 8px 2px;
+        border-radius: 10px;
+    }
+    .admin-table {
+        min-width: 480px;
+        font-size: 0.98rem;
+    }
+}
+
+
+h3 {
+    margin-top: 0px;
+    text-align: center;
+    font-size: 2.2rem;
+    font-weight: 700;
+    color: #009688;
+    margin-bottom: 1.5rem;
+}
+
+.admin-table, .admin-table th, .admin-table td {
+    font-family: 'Poppins', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; /* Example: Poppins or your choice */
+    font-size: 10px; /* Adjust size as needed */
+    font-weight: 400;   /* Adjust weight as needed */
+    color: #222;        /* Or another color if you want */
+}
+.admin-table {
+    width: 100%;
+    border-collapse: separate;
+    border-spacing: 0;
+    background: #f8fafc;
+    border-radius: 12px;
+    overflow: hidden;
+    
+    box-shadow: 0 2px 18px 0 rgba(236, 72, 153, 0.04);
+    margin-bottom: 18px;
+}
+
+.admin-table thead tr {
+    background: linear-gradient(90deg, #009688 0%, #f472b6 100%);
+}
+
+.admin-table th, .admin-table td {
+    padding: 13px 18px;
+    text-align: left;
+    font-size: 1.08rem;
+}
+
+.admin-table th {
+    color: #fff;
+    font-weight: 700;
+    letter-spacing: 0.4px;
+}
+
+.admin-table tbody tr {
+    border-bottom: 1px solid #bae6fd44;
+    transition: background 0.15s;
+}
+
+.admin-table tbody tr:hover {
+    background: #fdf2f8;
+}
+
+.admin-table td {
+    color: #334155;
+}
+
+    /* width: 100%;
+    border-collapse: separate;
+    border-spacing: 0;
+    background: none;
+    margin: 0 auto;
+    border-radius: 14px;
+    overflow: hidden;
+    box-shadow: 0 2px 12px 0 rgba(0,0,0,0.04);
+} */
+.admin-table th, .admin-table td {
+    padding: 14px 18px;
+    text-align: left;
+}
+.admin-table thead tr {
+    background: #f9a8d4;
+}
+.admin-table th {
+    color: #333;
+    font-weight: 700;
+    font-size: 1.08rem;
+    letter-spacing: 0.5px;
+}
+.admin-table tbody tr {
+    border-bottom: 1px solid #e5e7eb;
+    transition: background 0.15s;
+}
+.admin-table tbody tr:hover {
+    background: #f3f4f6;
+}
+.admin-table td {
+    color: #222;
+    font-size: 1rem;
+}
+
+.delete-user-btn, .delete-team-btn, .delete-hackathon-btn, .delete-challenge-btn {
+    background: linear-gradient(90deg, #f472b6 0%, #009688 100%);
+    color: #fff;
+    border: none;
+    border-radius: 20px;
+    padding: 6px 18px;
+    font-size: 1rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background 0.18s, color 0.18s;
+    box-shadow: 0 2px 8px 0 rgba(236, 72, 153, 0.08);
+}
+
+.delete-user-btn:hover, .delete-team-btn:hover, .delete-hackathon-btn:hover, .delete-challenge-btn:hover {
+    background: linear-gradient(90deg, #009688 0%, #f472b6 100%);
+    color: #0f172a;
+}
+
+    /* background: linear-gradient(90deg, #f87171 0%, #be185d 100%);
+    color: #fff;
+    border: none;
+    border-radius: 20px;
+    padding: 7px 22px;
+    font-size: 1rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background 0.2s, color 0.2s, box-shadow 0.2s;
+    box-shadow: 0 2px 8px rgba(249,168,212,0.08);
+} */
+.delete-user-btn:hover, .delete-team-btn:hover {
+    background: linear-gradient(90deg, #be185d 0%, #f87171 100%);
+    color: #fff;
+    box-shadow: 0 4px 14px rgba(249,168,212,0.16);
+}
+
+/* Responsive design */
+@media (max-width: 1024px) {
+    .admin-section {
+        max-width: 98vw;
+        padding: 0 2vw;
+    }
+    #user-table-container, #team-table-container, #hackathon-table-container, #challenge-table-container, #analytics-dashboard {
+        padding: 18px 5vw 14px 5vw;
+    }
+}
+@media (max-width: 800px) {
+    .admin-container {
+        flex-direction: column;
+    }
+    .sidebar {
+        width: 100%;
+        box-shadow: none;
+        padding: 15px 10px;
+        border-radius: 0 0 18px 18px;
+    }
+    .main-content {
+        padding: 20px 2vw;
+    }
+}
+
+/* Custom style for Generate New Hackathon button */
+#generate-hackathon {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    background: linear-gradient(90deg, #009688 0%, #f472b6 100%);
+    color: #fff;
+    border: none;
+    border-radius: 12px;
+    padding: 14px 32px;
+    font-size: 1.13rem;
+    font-weight: 600;
+    box-shadow: 0 2px 12px 0 rgba(236, 72, 153, 0.08);
+    margin: 24px 0 0 0;
+    cursor: pointer;
+    transition: background 0.2s, color 0.2s, box-shadow 0.2s;
+}
+#generate-hackathon i {
+    font-size: 1.3em;
+}
+#generate-hackathon:hover {
+    background: linear-gradient(90deg, #f472b6 0%, #009688 100%);
+    color: #fff;
+    box-shadow: 0 4px 18px 0 rgba(236, 72, 153, 0.18);
+}
+
+
+.admin-container {
+    display: flex;
+    min-height: 100vh;
+}
+
+.sidebar {
+    background: linear-gradient(135deg, #009688 0%, #009688 100%);
+    color: #fff;
+    width: 240px;
+    padding: 30px 20px;
+    box-shadow: 2px 0 8px rgba(0,0,0,0.06);
+}
+.sidebar h2 {
+    margin-top: 0;
+    font-size: 2rem;
+    margin-bottom: 2rem;
+}
+.sidebar ul {
+    list-style: none;
+    padding: 0;
+}
+.sidebar ul li {
+    margin-bottom: 1.2rem;
+}
+.sidebar ul li a {
+    color: #fff;
+    text-decoration: none;
+    font-size: 1.1rem;
+    transition: color 0.2s;
+}
+.sidebar ul li a:hover {
+    color: #ffd6e0;
+}
+.main-content {
+    flex: 1;
+    padding: 40px 5vw;
+    background: #f7f7fa;
+    min-width: 0;
+}
+.admin-section {
+    display: block;
+}
+@media (max-width: 800px) {
+    .admin-container {
+        flex-direction: column;
+    }
+    .sidebar {
+        width: 100%;
+        box-shadow: none;
+        padding: 15px 10px;
+    }
+    .main-content {
+        padding: 20px 2vw;
+    }
+}

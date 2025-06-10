@@ -1,0 +1,534 @@
+:root {
+    --primary-color: #1ba94c;
+    --text-color: #1a1a1a;
+    --light-text: #666;
+    --border-color: #ddd;
+    --card-background: #fff;
+    --nav-text-color: #ffc0cb;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+    line-height: 1.6;
+    background: linear-gradient(135deg, #074041 50%, #ff4f8b 100%);
+    min-height: 100vh;
+}
+
+/* Navbar Styles */
+.navbar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #116466;
+    padding: 15px 20px;
+    color: #F4A9C3;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+    z-index: 1000;
+}
+
+.nav-left {
+    display: flex;
+    align-items: center;
+    font-size: 24px;
+    font-weight: bold;
+}
+
+.nav-left .logo {
+    font-size: 25px;
+    background: -webkit-linear-gradient(left, #1afabe, #faa7be);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    animation: glow 1.5s infinite alternate;
+    text-shadow: 2px 2px 15px rgba(255, 140, 0, 0.7);
+}
+
+
+.nav-left img {
+    width: 40px;
+    height: 40px;
+    margin-right: 10px;
+    border-radius: 50%;
+}
+
+.nav-right {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+}
+
+.nav-right a {
+    color: #E6A5B7;
+    text-decoration: none;
+    font-size: 20px;
+    font-weight: bold;
+    transition: 0.3s;
+}
+
+.nav-right a:hover {
+    font-size: 20px;
+    background: -webkit-linear-gradient(left, #1afabe, #DA7893);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    animation: glow 1.5s infinite alternate;
+    text-shadow: 2px 2px 15px rgba(255, 140, 0, 0.7);
+}
+
+@keyframes glow {
+    0% { text-shadow: 0 0 10px #e773bb; }
+    100% { text-shadow: 0 0 25px #26d0d3; }
+}
+
+/* Main Container Styles */
+.main-container {
+    max-width: 1200px;
+    margin: 100px auto 2rem;
+    padding: 0 2rem;
+    min-height: calc(100vh - 100px);
+}
+
+.page-title {
+    font-size: 2rem;
+    color: #ffffff;
+    margin: 2rem 0;
+}
+
+/* Tabs Styles */
+/* .tabs-container {
+    display: flex;
+    gap: 20px;
+    margin: 20px;
+} */
+
+/* .tab {
+    padding: 10px 20px;
+    cursor: pointer;
+    border-bottom: 2px solid transparent;
+    color: #666;
+    font-weight: 600;
+} */
+
+/* .tab.active {
+    color: #4a90e2;
+    border-bottom-color: #4a90e2;
+}
+
+.tab[data-count]::after {
+    content: attr(data-count);
+    background-color: #e74c3c;
+    color: white;
+    padding: 0.1rem 0.4rem;
+    border-radius: 10px;
+    font-size: 0.8rem;
+    margin-left: 0.5rem;
+} */
+.hackathon-card img {
+    border-radius: 10px;
+    object-fit: cover;
+    max-height: 200px;
+}
+/* Competitions Grid */
+.competitions-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 20px;
+    padding: 20px;
+    max-width: 1400px;
+    margin: 0 auto;
+}
+
+/* Competition Card Styles */
+.competition-card {
+    background-color: #fff;
+    border-radius: 8px;
+    overflow: hidden;
+    transition: transform 0.2s;
+    display: flex;
+    flex-direction: column;
+}
+
+.competition-card:hover {
+    transform: translateY(-5px);
+}
+
+.card-image {
+    width: 100%;
+    height: 160px;
+    overflow: hidden;
+    background: #f5f5f5;
+}
+
+.card-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.card-content {
+    padding: 20px;
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+}
+
+.card-type {
+    color: #4a90e2;
+    font-size: 0.9rem;
+    font-weight: 600;
+    margin-bottom: 10px;
+    text-transform: uppercase;
+}
+
+.card-title {
+    font-size: 1.2rem;
+    color: #333;
+    margin-bottom: 15px;
+    font-weight: 600;
+}
+
+.date-label {
+    color: #4a90e2;
+    font-size: 0.9rem;
+    font-weight: 600;
+    margin-bottom: 5px;
+    text-transform: uppercase;
+}
+
+.card-date {
+    color: #666;
+    font-size: 0.9rem;
+    margin-bottom: 20px;
+}
+
+.participants {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    color: #666;
+    margin-bottom: 1rem;
+}
+
+.participants i {
+    font-size: 1.2rem;
+}
+
+.countdown {
+    margin: 1rem 0;
+}
+
+.countdown-label {
+    color: #666;
+    font-size: 0.8rem;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    margin-bottom: 0.5rem;
+}
+
+.countdown-timer {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    margin-bottom: 1rem;
+}
+
+.time-unit {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.time-unit .number {
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: #333;
+}
+
+.time-unit .label {
+    font-size: 0.7rem;
+    color: #666;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.time-separator {
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: #333;
+    margin-top: -0.5rem;
+}
+
+.start-now-btn {
+    width: 100%;
+    padding: 12px;
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-weight: 600;
+    transition: background-color 0.2s;
+}
+
+.start-now-btn:hover {
+    background-color: #45a049;
+}
+
+.no-hackathons {
+    text-align: center;
+    padding: 20px;
+    color: #666;
+    grid-column: 1 / -1;
+}
+
+.hackathon-card {
+    background-color: #F4A9C3;
+    color: #ffffff;
+    border-radius: 15px;
+    width: 100%;
+    max-width: 220px;
+    padding: 20px;
+    text-align: center;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.hackathon-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 12px 25px rgba(0, 0, 0, 0.4);
+}
+
+.hackathon-type {
+    font-weight: 700;
+    text-transform: uppercase;
+    font-size: 0.85rem;
+    margin-top: 5px;
+    color: #162c3b;
+}
+
+.hackathon-title {
+    font-size: 1.2rem;
+    margin: 12px 0;
+    font-weight: bold;
+    color: #162c3b;
+}
+
+.start-date-label {
+    font-weight: 700;
+    text-transform: uppercase;
+    font-size: 0.85rem;
+    margin-top: 15px;
+    color: #162c3b;
+}
+
+.start-date {
+    font-size: 0.95rem;
+    color: #333;
+    margin-top: 5px;
+    margin-bottom: 15px;
+}
+
+.source-label {
+    color: #4a90e2;
+    font-size: 0.9rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    margin-top: 10px;
+}
+
+.source {
+    color: #666;
+    font-size: 1rem;
+    margin-bottom: 10px;
+}
+
+.loading {
+    text-align: center;
+    padding: 20px;
+    color: #666;
+}
+
+.error {
+    text-align: center;
+    padding: 20px;
+    color: #ff4444;
+}
+
+/* Responsive design */
+@media (max-width: 768px) {
+    .competitions-grid {
+        grid-template-columns: 1fr;
+        padding: 10px;
+    }
+
+    .hackathon-card {
+        padding: 20px;
+    }
+
+    .hackathon-title {
+        font-size: 1.3rem;
+    }
+}
+
+/* hggjb */
+/* ggff */
+/* hfghghb */
+.cards-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 20px;
+    padding: 30px 50px;
+    justify-items: center;
+}
+
+.hackathon-card {
+    background-color: #f9c5d7;
+    color: #ffffff;
+    border-radius: 15px;
+    width: 100%;
+    max-width: 220px;
+    padding: 20px;
+    text-align: center;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.hackathon-card:hover {
+    /* transform: translateY(-5px);
+    box-shadow: 0 12px 25px rgba(0, 0, 0, 0.4); */
+
+    transform: scale(1.1) rotate(1.5deg);
+    box-shadow: 0 0 15px  #00ffd9; 
+}
+
+.hackathon-type {
+    font-weight: 700;
+    text-transform: uppercase;
+    font-size: 0.85rem;
+    margin-top: 5px;
+    color: #00ffd9;
+}
+
+.hackathon-title {
+    font-size: 1.2rem;
+    margin: 12px 0;
+    font-weight: bold;
+    color: #ff8ca3;
+}
+
+.start-date-label {
+    font-weight: 700;
+    text-transform: uppercase;
+    font-size: 0.85rem;
+    margin-top: 15px;
+    color: #00ffd9;
+}
+
+.start-date {
+    font-size: 0.95rem;
+    color: #e2e2e2;
+    margin-top: 5px;
+    margin-bottom: 15px;
+}
+
+.start-now-btn {
+    display: block;
+    width: 100%;
+    padding: 12px;
+    background-color: #00ffd9;
+    color: #000;
+    font-weight: bold;
+    border: none;
+    border-radius: 3px !important;
+    cursor: pointer;
+    font-size: 0.9rem;
+    transition: background-color 0.3s;
+    text-transform: uppercase;
+}
+
+.start-now-btn:hover {
+    background-color: #00c3aa;
+}
+#filter-bar-mount{
+    font: Segoe UI !important;
+}
+
+
+/* Loading and Error States */
+.loading, .error, .no-hackathons {
+    text-align: center;
+    padding: 40px;
+    color: #e2e2e2;
+    font-size: 1.2rem;
+    background: #162c3b;
+    border-radius: 15px;
+    margin: 20px;
+    width: 100%;
+    max-width: 600px;
+    margin: 20px auto;
+}
+
+/* Page Title */
+.page-title {
+    
+    color: #00c3aa;
+    font-size: 2rem;
+    font-weight: 700;
+    text-align: center;
+    margin: 40px 0;
+    padding: 0 20px;
+}
+
+/* Animation */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.hackathon-cards {
+    animation: fadeIn 0.3s ease-out forwards;
+}
+#load-more {
+    font-family: 'Segoe UI', sans-serif;
+    display: block;
+    margin: 30px auto;
+    padding: 7px 10px;
+    background-color: #00ffd9;
+    color: #083130;
+    font-weight: bold;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 1rem;
+    transition: background-color 0.3s;
+}
+
+#load-more:hover {
+    background-color: #00c3aa;
+}
+
+.hackathon-tab.active {
+    background-color: #4a90e2; /* Blue background color */
+    color: white; /* White text color */
+    padding: 7px 22px; /* Match button padding */
+    border-radius: 5px; /* Rounded corners */
+    border-bottom: none; /* Remove any potential conflicting bottom border */
+}
+

@@ -1,0 +1,21 @@
+FROM python:3.9-alpine
+
+# Install bash
+RUN apk add --no-cache bash
+
+WORKDIR /app
+
+# Create a non-root user for security
+RUN addgroup -S coderunner && adduser -S coderunner -G coderunner
+
+# Change ownership of the /app directory to the coderunner user
+RUN chown -R coderunner:coderunner /app
+
+USER coderunner
+
+# Set Python environment variables
+ENV PYTHONUNBUFFERED=1 \
+    PYTHONDONTWRITEBYTECODE=1 \
+    PYTHONPATH=/app
+
+CMD ["python3"] 

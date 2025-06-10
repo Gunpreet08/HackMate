@@ -1,0 +1,152 @@
+/* Custom Popup Modal */
+.custom-popup-modal {
+    position: fixed;
+    top: 0; left: 0; right: 0; bottom: 0;
+    background: rgba(7, 60, 56, 0.82);
+    z-index: 3000;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.2s;
+}
+.custom-popup-modal.show {
+    opacity: 1;
+    pointer-events: auto;
+}
+.custom-popup-content {
+    background: linear-gradient(135deg, #073c38 65%, #182848 100%) !important;
+    color: #fff !important;
+    border-radius: 22px !important;
+    padding: 36px 36px 28px 36px !important;
+    min-width: 320px !important;
+    max-width: 95vw !important;
+    box-shadow: 0 8px 32px 0 rgba(38, 208, 211, 0.18), 0 0 0 4px #073c38 inset !important;
+    border: 2.5px solid #26d0d3 !important;
+    position: relative !important;
+    font-family: 'Segoe UI', Arial, sans-serif !important;
+    text-align: center !important;
+}
+.custom-popup-close {
+    position: absolute;
+    top: 12px;
+    right: 18px;
+    font-size: 2rem;
+    color: #26d0d3 !important;
+    cursor: pointer;
+    outline: none;
+    transition: color 0.2s;
+    background: none !important;
+    border: none !important;
+}
+.custom-popup-close:hover {
+    color: #ff2e88 !important;
+}
+.custom-popup-content h3 {
+    margin: 0 0 16px 0 !important;
+    font-size: 1.5rem !important;
+    color: #26d0d3 !important;
+    font-weight: bold !important;
+    letter-spacing: 1px !important;
+    text-shadow: 0 2px 12px #073c38, 0 1px 0 #fff1 !important;
+}
+.custom-popup-message {
+    margin-bottom: 18px !important;
+    font-size: 1.12rem !important;
+    color: #fff !important;
+}
+
+.custom-popup-input {
+    width: 90%;
+    padding: 12px 14px !important;
+    margin-bottom: 20px !important;
+    border-radius: 10px !important;
+    border: 2px solid #26d0d3 !important;
+    background: #122d2c !important;
+    color: #fff !important;
+    font-size: 1.1rem !important;
+    outline: none !important;
+    box-shadow: 0 2px 8px 0 #26d0d355 !important;
+    transition: border 0.2s, box-shadow 0.2s !important;
+}
+.custom-popup-input:focus {
+    border: 2px solid #ff2e88 !important;
+    box-shadow: 0 0 0 2px #ff2e8855 !important;
+}
+.custom-popup-actions {
+    display: flex;
+    justify-content: center;
+    gap: 18px;
+}
+.custom-popup-confirm {
+    padding: 10px 26px !important;
+    border: none !important;
+    border-radius: 8px !important;
+    font-size: 1.1rem !important;
+    font-weight: bold !important;
+    cursor: pointer !important;
+    background: linear-gradient(90deg, #26d0d3 70%, #ff2e88 100%) !important;
+    color: #fff !important;
+    box-shadow: 0 2px 10px 0 #26d0d355 !important;
+    min-width: 90px !important;
+    transition: background 0.2s, box-shadow 0.2s !important;
+}
+.custom-popup-confirm:hover {
+    background: linear-gradient(90deg, #ff2e88 70%, #26d0d3 100%) !important;
+    color: #fff !important;
+    box-shadow: 0 4px 16px 0 #ff2e8855 !important;
+}
+.custom-popup-cancel {
+    padding: 10px 26px !important;
+    border: none !important;
+    border-radius: 8px !important;
+    font-size: 1.1rem !important;
+    font-weight: bold !important;
+    cursor: pointer !important;
+    background: #ff2e88 !important;
+    color: #fff !important;
+    box-shadow: 0 2px 10px 0 #ff2e8855 !important;
+    min-width: 90px !important;
+    transition: background 0.2s, box-shadow 0.2s !important;
+}
+.custom-popup-cancel:hover {
+    background: #26d0d3 !important;
+    color: #fff !important;
+    box-shadow: 0 4px 16px 0 #26d0d355 !important;
+}
+
+/* Toast Notification */
+.custom-toast {
+    position: fixed;
+    left: 50%;
+    bottom: 38px;
+    transform: translateX(-50%) translateY(40px);
+    background: #182848;
+    color: #fff;
+    padding: 13px 32px;
+    border-radius: 22px;
+    font-size: 1.07rem;
+    font-weight: 500;
+    box-shadow: 0 2px 12px 0 rgba(31, 38, 135, 0.10);
+    opacity: 0;
+    z-index: 3500;
+    pointer-events: none;
+    transition: opacity 0.2s, transform 0.2s;
+}
+.custom-toast.show {
+    opacity: 1;
+    transform: translateX(-50%) translateY(0);
+}
+.custom-toast-success {
+    background: #26d0d3;
+    color: #182848;
+}
+.custom-toast-error {
+    background: #fc8ab0;
+    color: #fff;
+}
+.custom-toast-info {
+    background: #182848;
+    color: #fff;
+}

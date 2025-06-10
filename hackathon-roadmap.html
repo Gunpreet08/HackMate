@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hackathon Roadmap - HackMate</title>
+    <link rel="stylesheet" href="indexpinkstyle.css">
+    <link rel="stylesheet" href="roadmap.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+</head>
+<body>
+    <!-- Navbar -->
+    <nav class="navbar">
+        <div class="logo">
+            <img src="pink/Gemini_Generated_Image_e0j8kee0j8kee0j8.jpeg" alt="Logo">
+            <span>HackMate</span>
+        </div>
+        <div class="nav-links">
+            <a href="indexpink.html">Home</a>
+            <a href="formmongo/server/public/login.html">Login/Signup</a>
+            <a href="indexpink.html#features-section">Features</a>
+            <a href="indexpink.html#about-section">About Us</a>
+            <a href="indexpink.html#contact">Contact</a>
+        </div>
+    </nav>
+
+    <!-- Roadmap Header -->
+    <header class="roadmap-header">
+        <h1>Your Hackathon Journey</h1>
+        <p>Follow our comprehensive guide to hackathon success</p>
+        <div class="completion-status">
+            <div class="percentage-circle">
+                <svg viewBox="0 0 36 36" class="circular-chart">
+                    <path d="M18 2.0845
+                        a 15.9155 15.9155 0 0 1 0 31.831
+                        a 15.9155 15.9155 0 0 1 0 -31.831"
+                        fill="none"
+                        stroke="#eee"
+                        stroke-width="2"
+                    />
+                    <path d="M18 2.0845
+                        a 15.9155 15.9155 0 0 1 0 31.831
+                        a 15.9155 15.9155 0 0 1 0 -31.831"
+                        fill="none"
+                        stroke="#ff69b4"
+                        stroke-width="2"
+                        class="percentage-indicator"
+                    />
+                </svg>
+                <div class="percentage-text">0%</div>
+            </div>
+            <p class="completion-text">Journey Progress</p>
+        </div>
+    </header>
+
+    <!-- Hackathon Roadmap Section -->
+    <section class="hackathon-roadmap">
+        <div class="roadmap-container">
+            <div class="progress-bar">
+                <div class="progress" id="roadmapProgress"></div>
+            </div>
+            
+            <div class="milestones">
+                <div class="milestone" data-step="1">
+                    <div class="milestone-dot"></div>
+                    <div class="milestone-content">
+                        <div class="milestone-icon">
+                            <i class="fas fa-user-plus"></i>
+                        </div>
+                        <h3>Registration</h3>
+                        <div class="milestone-popup">
+                            <p>Create your account and complete your profile with skills and interests</p>
+                            <ul>
+                                <li>Set up your developer profile</li>
+                                <li>Add your technical skills</li>
+                                <li>Upload your portfolio</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="milestone" data-step="2">
+                    <div class="milestone-dot"></div>
+                    <div class="milestone-content">
+                        <div class="milestone-icon">
+                            <i class="fas fa-search"></i>
+                        </div>
+                        <h3>Find Hackathon</h3>
+                        <div class="milestone-popup">
+                            <p>Users browse upcoming hackathons via the dynamic ticker.</p>
+                            <ul>
+                                <li>Notifications alert logged-in users about new hackathons</li>
+                                <li>Clicking on a hackathon opens details like themes, prizes, deadlines</li>
+                                <li>Register for the Event</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="milestone" data-step="3">
+                    <div class="milestone-dot"></div>
+                    <div class="milestone-content">
+                        <div class="milestone-icon">
+                            <i class="fas fa-users"></i>
+                        </div>
+                        <h3>Team Formation</h3>
+                        <div class="milestone-popup">
+                            <p>Find the perfect teammates for your hackathon success</p>
+                            <ul>
+                                <li>Browse potential teammates</li>
+                                <li>Match based on skills</li>
+                                <li>Connect via chat</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="milestone" data-step="4">
+                    <div class="milestone-dot"></div>
+                    <div class="milestone-content">
+                        <div class="milestone-icon">
+                            <i class="fas fa-code"></i>
+                        </div>
+                        <h3>Development</h3>
+                        <div class="milestone-popup">
+                            <p>Collaborate with your team to build something amazing</p>
+                            <ul>
+                                <li>Brainstorm ideas</li>
+                                <li>Plan your MVP</li>
+                                <li>Code and create</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="milestone" data-step="5">
+                    <div class="milestone-dot"></div>
+                    <div class="milestone-content">
+                        <div class="milestone-icon">
+                            <i class="fas fa-rocket"></i>
+                        </div>
+                        <h3>Submission</h3>
+                        <div class="milestone-popup">
+                            <p>Present your project to the world</p>
+                            <ul>
+                                <li>Prepare documentation</li>
+                                <li>Create demo video</li>
+                                <li>Submit your project</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    <script>
+        // Roadmap Progress Animation
+        document.addEventListener('DOMContentLoaded', function() {
+            const milestones = document.querySelectorAll('.milestone');
+            const progress = document.getElementById('roadmapProgress');
+            const percentageIndicator = document.querySelector('.percentage-indicator');
+            const percentageText = document.querySelector('.percentage-text');
+            let currentStep = 0;
+            const totalSteps = milestones.length;
+
+            // Initialize progress
+            updateProgress(0);
+
+            function updatePercentage(step) {
+                const percentage = Math.round((step / totalSteps) * 100);
+                const circumference = 2 * Math.PI * 15.9155; // Radius of the SVG circle
+                const offset = circumference - (percentage / 100) * circumference;
+                
+                // Update the circle progress
+                percentageIndicator.style.strokeDasharray = `${circumference} ${circumference}`;
+                percentageIndicator.style.strokeDashoffset = offset;
+                
+                // Update the percentage text
+                percentageText.textContent = `${percentage}%`;
+
+                // Add animation class
+                percentageText.classList.add('update');
+                setTimeout(() => percentageText.classList.remove('update'), 500);
+            }
+
+            // Add click handlers to milestones
+            milestones.forEach((milestone, index) => {
+                milestone.addEventListener('mouseenter', () => {
+                    updateProgress((index + 1) * (100 / milestones.length));
+                });
+
+                milestone.addEventListener('mouseleave', () => {
+                    updateProgress(currentStep * (100 / milestones.length));
+                });
+
+                milestone.addEventListener('click', () => {
+                    currentStep = index + 1;
+                    updateProgress(currentStep * (100 / milestones.length));
+                    updatePercentage(currentStep);
+                    
+                    // Update active state
+                    milestones.forEach((m, i) => {
+                        if (i < currentStep) {
+                            m.querySelector('.milestone-dot').style.backgroundColor = '#98fb98';
+                            m.classList.add('completed');
+                        } else {
+                            m.querySelector('.milestone-dot').style.backgroundColor = '#ff69b4';
+                            m.classList.remove('completed');
+                        }
+                    });
+                });
+            });
+
+            function updateProgress(percentage) {
+                progress.style.width = `${percentage}%`;
+            }
+        });
+    </script>
+</body>
+</html> 

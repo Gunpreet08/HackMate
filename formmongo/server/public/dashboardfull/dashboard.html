@@ -1,0 +1,332 @@
+<!-- yeh sahi -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HackMate Dashboard</title>
+    <link rel="stylesheet" href="dashboard.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link rel="stylesheet" href="popup.css">
+    <script src="popup.js"></script>
+    <script defer src="dashboard.js"></script>
+</head>
+<body>
+    <div class="container">
+        <!-- Sidebar -->
+        <div class="sidebar">
+            <h2>HackMate</h2>
+            <div class="profile">
+    <img src="images/profile.jpg" alt="Profile" class="profile">
+    <h2 style="display:block;font-size:15px;color:#26d0d3;margin-bottom:0px;text-decoration:bold;">Welcome 👋</h2>
+    <b><p id="userFullName">Loading...</p></b>
+</div>
+            <ul>
+                <li class="nav-item"><i class="fas fa-laptop-code"></i> <a href="../competitions/competitions.html">Hackathons</a></li>
+                <li class="nav-item" id="teamsBtn"><i class="fas fa-users"></i> Teams</li>
+                <li class="nav-item"><i class="fas fa-code"></i> <a href="../code editor/index.html">Daily Challenge</a></li>
+                <li class="nav-item"><i class="fas fa-calendar-alt"></i> Calendar</li>
+                <li class="nav-item"><i class="fas fa-tasks"></i> To-Do List</li>
+                <li class="nav-item"><i class="fas fa-user"></i> Profile</li>
+                <li class="nav-item" id="notificationsBtn">
+                    <i class="fas fa-bell"></i> Notifications
+                    <span class="notification-badge" style="display: none">0</span>
+                </li>
+            </ul>
+            <div class="logout-btn">
+                <button>Logout</button>
+            </div>
+        </div>
+
+        <!-- Main Dashboard -->
+        <div class="dashboard">
+           
+            <!-- Add Match Results Modal -->
+            <div id="matchModal" class="modal">
+                <div class="modal-content">
+                    <span class="close-modal">&times;</span>
+                    <h2>Finding Your Perfect Match...</h2>
+                    <div class="loading-animation">
+                        <div class="spinner"></div>
+                        <p>Analyzing profiles and interests...</p>
+                    </div>
+                    <div id="matchResults" class="match-results">
+                        <!-- Match results will be populated here -->
+                    </div>
+                </div>
+            </div>
+
+
+            <!-- Stats -->
+            <div class="user-profile-section">
+                <div class="profile-info">
+
+                    <div class="info-group">
+                        <label>Username:</label>
+                        <p id="profileUsername">Loading...</p>
+                    </div>
+                    <div class="info-group">
+                        <label>Email:</label>
+                        <p id="profileEmail">Loading...</p>
+                    </div>
+                    <div class="info-group">
+                        <label>Tech Stack:</label>
+                        <div id="profileTechStack" class="tags-container"></div>
+                    </div>
+                    <div class="info-group">
+                        <label>Project Interests:</label>
+                        <div id="profileInterests" class="tags-container"></div>
+                    </div>
+                </div>
+            </div>
+                
+               
+                    <div class="match-section">
+                        <button id="findMatchBtn" class="find-match-btn">
+                            <i class="fas fa-user-friends"></i> Tap to Find Your Team
+                        </button>
+                    </div>
+                
+
+<div class="mid-flex-row">
+    <div class="box">
+        <div class="chatbot-content">
+            <div class="chatbot-text">
+                <h3>I'm ChaturBot, your AI guide! Tap the door to chat with me. 🤖</h3>
+                <button id="openChatbot">💬 Tap to chat</button>
+            </div>
+        </div>
+    </div>
+    <div class="calendar">
+        <h3 id="monthYear">March 2025</h3>
+        <table>
+            <thead>
+                <tr>
+                    <th>Su</th> <th>Mo</th> <th>Tu</th> <th>We</th> <th>Th</th> <th>Fr</th> <th>Sa</th>
+                </tr>
+            </thead>
+            <tbody id="calendar-body">
+            
+            </tbody>
+        </table>
+        <button id="add-event-btn" class="add-event-btn">Add Event</button>
+    </div>
+</div>
+        </div>
+    </div>
+    </div>
+
+        <!-- Right Sidebar -->
+        <div class="right-sidebar">
+            <div class="hackathon-ticker">
+                <ul id="hackathon-list">
+                    <li class="loading">⏳ Loading hackathons...</li>
+                </ul>  
+            </div>
+            <!-- To-Do List -->
+            <div class="widget">
+                <h3>✅ To-Do List</h3>
+                <input type="text" id="taskInput" class="task-input" placeholder="Add a task">
+                <button id="add-task-btn" class="add-task-btn">Add</button>
+                <ul id="taskList"></ul>
+            </div>
+        </div>
+    </div>
+
+    <!-- Add Notifications Panel -->
+    <div id="notificationsPanel" class="notifications-panel" style="display: none;">
+        <div class="notifications-header">
+            <h3>Notifications</h3>
+            <button class="close-notifications">&times;</button>
+        </div>
+        <div class="notifications-content">
+            <!-- Notifications will be populated here -->
+        </div>
+    </div>
+
+    <!-- Teams Modal -->
+    <div id="teamsModal" class="modal" style="display:none;">
+        <div class="modal-content">
+            <span class="close-modal" id="closeTeamsModal">&times;</span>
+            <h2>Your Teams</h2>
+            <div id="teamsListContainer">
+                <!-- Teams will be loaded here -->
+            </div>
+        </div>
+    </div>
+
+    <!-- Add Profile Edit Modal -->
+    <div id="profileEditModal" class="profile-modal">
+        <div class="profile-modal-content">
+            <span class="close-modal">&times;</span>
+            <h2>Edit Profile</h2>
+            <form id="profileEditForm">
+                <div class="form-group">
+                    <label for="editFullName">Full Name:</label>
+                    <input type="text" id="editFullName" name="fullName" placeholder="Enter fullName">
+                </div>
+                <div class="form-group">
+                    <label for="editUsername">Username:</label>
+                    <input type="text" id="editUsername" name="username" >
+                </div>
+                <div class="form-group">
+                    <label for="editEmail">Email:</label>
+                    <input type="email" id="editEmail" name="email" >
+                </div>
+                <div class="form-group">
+                    <label for="editPassword">Password:</label>
+                    <input type="password" name="password" required title="Password is a compulsory field">
+                </div>
+                <div class="form-group">
+                    <label for="editLocation">Location:</label>
+                    <input type="text" name="location" placeholder="City, Country" >
+                </div>
+                <div class="form-group">
+                    <label>Primary Role</label>
+                    <select name="primaryRole">
+                        <option>Frontend Developer</option>
+                        <option>Backend Developer</option>
+                        <option>Full-Stack Developer</option>
+                        <option>Designer</option>
+                        <option>Data Scientist</option>
+                        <option>AI/ML</option>
+                        <option>Cybersecurity</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="editTechStack">Tech Stack (comma-separated):</label>
+                    <input type="text" id="editTechStack" name="techStack" placeholder="e.g., JavaScript, Python, React">
+                </div>
+                <div class="form-group">
+                    <label>Experience Level</label>
+                    <select name="experienceLevel">
+                        <option>Beginner</option>
+                        <option>Intermediate</option>
+                        <option>Advanced</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label>Past Hackathon Experience</label>
+                    <select name="pastHackathonExperience">
+                        <option>Yes</option>
+                        <option>No</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="editInterests">Project Interests (comma-separated):</label>
+                    <input type="text" id="editInterests" name="projectInterests" placeholder="e.g., Web Development, AI, Mobile Apps">
+                </div>
+                <div class="form-group">
+                    <label>Preferred Team Size</label>
+                    <select name="preferredTeamSize">
+                        <option>Small (2-3)</option>
+                        <option>Medium (4-6)</option>
+                        <option>Large (7+)</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label>Work Style</label>
+                    <input type="text" name="workStyle" placeholder="Hands-on coding, ideation, mentoring">
+                </div>
+                <div class="form-group">
+                    <label>Availability for Hackathons</label>
+                    <select name="availability">
+                        <option>Weekends</option>
+                        <option>Full-time</option>
+                        <option>Flexible</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label>Preferred Hackathon Type</label>
+                    <select name="preferredHackathonType">
+                        <option>In-person</option>
+                        <option>Online</option>
+                        <option>Hybrid</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label>GitHub</label>
+                    <input type="url" name="github" placeholder="GitHub Profile Link">
+                </div>
+                <div class="form-group">
+                    <label>LinkedIn</label>
+                    <input type="url" name="linkedin" placeholder="LinkedIn Profile Link">
+                </div>
+                <div class="form-group">
+                    <label>Personal Website/Portfolio</label>
+                    <input type="url" name="portfolio" placeholder="Website/Portfolio URL">
+                </div>
+                
+                <button type="submit" class="save-profile-btn">Save Changes</button>
+            </form>
+        </div>
+    </div>
+    <script>
+        // Ensure handleTeamInvitation is globally available for inline onclick handlers
+        if (typeof handleTeamInvitation === 'function') {
+            window.handleTeamInvitation = handleTeamInvitation;
+        }
+        
+        document.addEventListener("DOMContentLoaded", function () {
+            let tickerList = document.getElementById("hackathon-list");
+    
+            // ✅ Start animation immediately with dummy data
+            tickerList.innerHTML = `<li>🔄 Fetching hackathons...</li>
+                <li>🎯 Stay tuned for upcoming events!</li>
+                <li>🚀 Preparing hackathons list...</li>`; 
+
+                startTickerAnimation(); // Start animation immediately
+
+            // fetch fresh data
+            fetch("http://127.0.0.1:5000/api/hackathons")
+                .then(response => response.json())
+                .then(data => {
+                    tickerList.innerHTML = ""; //Remove placeholder
+
+                    // Create original hackathons list
+                    let allItems ="";
+                    data.forEach(hackathon => {
+                        // Format date (optional: make it more readable)
+                        let startDate = new Date(hackathon.date).toLocaleDateString("en-US", {
+                        weekday: "short",
+                        month: "short",
+                        day: "2-digit",
+                        year: "numeric"
+                    });
+
+                    allItems += `<li class="colon"><a href="${hackathon.url}" target="_blank">${hackathon.name}</a> - <span class="date">${startDate}</span></li>`;
+                });
+                // ✅ Duplicate the list to create an infinite effect
+                tickerList.innerHTML = allItems + allItems;
+            })
+            .catch(error =>{
+                console.error("Error fetching hackathons:", error);
+                tickerList.innerHTML = `<li class="error">⚠️ Failed to load hackathons. Please try again.</li>`;
+            });       
+        });
+
+// ✅ Function to start animation dynamically
+function startTickerAnimation() {
+    let ticker = document.querySelector(".ticker ul");
+
+    if (ticker) {
+        let styleSheet = document.createElement("style");
+        styleSheet.innerHTML = `
+            @keyframes ticker-scroll {
+                from { transform: translateY(0%); }
+                to { transform: translateY(-50%); }
+                //to { transform: translateY(-${ticker.scrollWidth}px); }
+            }
+            .ticker ul {
+                display: block;
+                animation: ticker-scroll 25s linear infinite;
+            }
+        `;
+        document.head.appendChild(styleSheet);
+    }
+}
+    </script>
+    
+</body>
+</html>

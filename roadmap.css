@@ -1,0 +1,456 @@
+/* Roadmap Header Styles */
+body {
+    background: linear-gradient(135deg, #074041 0%, #ff4f8b 100%);
+    min-height: 100vh;
+    margin: 0;
+    font-family: 'Poppins', sans-serif;
+}
+
+.roadmap-header {
+    text-align: center;
+    padding: 1rem 1rem;
+    background: rgba(7, 64, 65, 0.8);
+    position: relative;
+    overflow: hidden;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.roadmap-header::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: url('pink/roadmap.png') center/cover no-repeat;
+    opacity: 0.1;
+    z-index: 0;
+}
+
+.roadmap-header h1 {
+    font-size: 2.5rem;
+    margin-bottom: 1rem;
+    background: linear-gradient(45deg, #1afabe, #faa7be);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    text-shadow: 2px 2px 10px rgba(255, 182, 227, 0.7);
+    position: relative;
+    z-index: 1;
+}
+
+.roadmap-header p {
+    font-size: 1.1rem;
+    color: #F4A9C3;
+    max-width: 600px;
+    margin: 0 auto;
+    position: relative;
+    z-index: 1;
+    line-height: 1.4;
+}
+
+/* hackathon Roadmap Section */
+.hackathon-roadmap {
+    background: url('pink/roadmap.png') center/cover no-repeat fixed;
+    padding: 1rem 1rem;
+    position: relative;
+}
+
+.hackathon-roadmap::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(135deg, 
+        rgba(7, 64, 65, 0.97), 
+        rgba(255, 79, 139, 0.93)
+    );
+    z-index: 1;
+}
+
+/* Milestone Grid Layout */
+.milestones {
+    display: flex;
+    flex-direction: row;
+    gap: 1rem;
+    width: 100%;
+    margin: 1rem auto;
+    position: relative;
+    z-index: 2;
+    justify-content: center;
+    align-items: center;
+}
+
+/* Style the scrollbar */
+.milestones::-webkit-scrollbar {
+    height: 8px;
+}
+
+.milestones::-webkit-scrollbar-track {
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 4px;
+}
+
+.milestones::-webkit-scrollbar-thumb {
+    background: rgba(26, 250, 190, 0.3);
+    border-radius: 4px;
+}
+
+.milestones::-webkit-scrollbar-thumb:hover {
+    background: rgba(26, 250, 190, 0.5);
+}
+
+/* Milestone Card Styles */
+.milestone-content {
+    background: rgba(255, 255, 255, 0.03);
+    backdrop-filter: blur(10px);
+    border-radius: 12px;
+    padding: 0.8rem;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+    transition: all 0.3s ease;
+    text-align: center;
+    position: relative;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    overflow: visible;
+    width: 180px;
+}
+
+.milestone:hover .milestone-content {
+    transform: translateY(-10px);
+    box-shadow: 0 15px 45px rgba(255, 105, 180, 0.2);
+    border-color: rgba(26, 250, 190, 0.3);
+    background: rgba(255, 255, 255, 0.05);
+}
+
+.milestone h3 {
+    color: #1afabe;
+    margin: 0.5rem 0;
+    font-size: 1rem;
+    font-weight: 600;
+    letter-spacing: 0.5px;
+}
+
+/* Image Styles */
+.milestone-image {
+    display: none;
+}
+
+/* Popup Styles */
+.milestone-popup {
+    position: absolute;
+    bottom: 120%;
+    left: 50%;
+    transform: translateX(-50%) scale(0.95);
+    background: rgba(7, 64, 65, 0.95);
+    backdrop-filter: blur(10px);
+    color: white;
+    padding: 1.5rem;
+    border-radius: 15px;
+    box-shadow: 0 15px 45px rgba(0, 0, 0, 0.2);
+    width: 300px;
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
+    z-index: 10;
+    border: 1px solid rgba(26, 250, 190, 0.2);
+}
+
+.milestone:hover .milestone-popup {
+    opacity: 1;
+    visibility: visible;
+    transform: translateX(-50%) scale(1);
+}
+
+.milestone-popup::after {
+    content: '';
+    position: absolute;
+    bottom: -10px;
+    left: 50%;
+    transform: translateX(-50%);
+    border-left: 10px solid transparent;
+    border-right: 10px solid transparent;
+    border-top: 10px solid rgba(7, 64, 65, 0.95);
+}
+
+.milestone-popup p {
+    color: #1afabe;
+    font-size: 1.1rem;
+    margin-bottom: 1rem;
+    line-height: 1.6;
+}
+
+.milestone-popup ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.milestone-popup ul li {
+    color: #F4A9C3;
+    margin-bottom: 0.8rem;
+    padding-left: 1.5rem;
+    position: relative;
+    line-height: 1.4;
+}
+
+.milestone-popup ul li::before {
+    content: '→';
+    position: absolute;
+    left: 0;
+    color: #1afabe;
+}
+
+/* Completion Status */
+.completion-status {
+    background: rgba(7, 64, 65, 0.9);
+    padding: 1.5rem;
+    border-radius: 15px;
+    margin: 1rem auto;
+    max-width: 300px;
+    border: 2px solid rgba(26, 250, 190, 0.3);
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+    position: relative;
+    z-index: 2;
+    text-align: center;
+}
+
+.percentage-circle {
+    width: 150px;
+    height: 150px;
+    margin: 0 auto 0.5rem;
+    position: relative;
+}
+
+.circular-chart {
+    width: 100%;
+    height: 100%;
+}
+
+.circular-chart .circle {
+    fill: none;
+    stroke-width: 2.8;
+    stroke-linecap: round;
+}
+
+.circular-chart .circle-bg {
+    stroke: rgba(255, 255, 255, 0.1);
+}
+
+.circular-chart .circle-progress {
+    stroke: url(#gradient);
+    stroke-dasharray: 0, 100;
+    transition: stroke-dasharray 0.5s ease;
+}
+
+.percentage-text {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 2.5rem;
+    font-weight: 700;
+    color: #1afabe;
+    text-shadow: 0 0 10px rgba(26, 250, 190, 0.5);
+}
+
+.completion-text {
+    font-size: 1rem;
+    color: #F4A9C3;
+    margin-top: 0.5rem;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .roadmap-header {
+        padding: 1rem;
+    }
+
+    .hackathon-roadmap {
+        padding: 1rem;
+    }
+
+    .completion-status {
+        padding: 1rem;
+    }
+
+    .percentage-circle {
+        width: 120px;
+        height: 120px;
+    }
+
+    .percentage-text {
+        font-size: 2rem;
+    }
+
+    .milestone-content {
+        width: 150px;
+        padding: 0.6rem;
+    }
+
+    .milestone-image {
+        width: 60px;
+        height: 60px;
+    }
+
+    .roadmap-header h1 {
+        font-size: 2rem;
+    }
+    
+    .roadmap-header p {
+        font-size: 1rem;
+    }
+
+    .milestone h3 {
+        font-size: 0.9rem;
+    }
+}
+
+/* Animation Refinements */
+@keyframes shimmer {
+    0% {
+        background-position: -200% 0;
+    }
+    100% {
+        background-position: 200% 0;
+    }
+}
+
+.milestone:hover .milestone-image {
+    animation: shimmer 3s infinite linear;
+    background-size: 200% 100%;
+}
+
+.milestone.completed::after {
+    background: linear-gradient(45deg, #1afabe, #faa7be);
+    color: #074041;
+    font-weight: bold;
+    box-shadow: 0 3px 10px rgba(26, 250, 190, 0.3);
+}
+
+/* Animation for resource cards */
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.resource-card {
+    animation: fadeInUp 0.6s ease-out forwards;
+}
+
+.resource-card:nth-child(1) { animation-delay: 0.1s; }
+.resource-card:nth-child(2) { animation-delay: 0.2s; }
+.resource-card:nth-child(3) { animation-delay: 0.3s; }
+.resource-card:nth-child(4) { animation-delay: 0.4s; }
+
+/* Remove the different shapes for milestones since we want all circular */
+.milestone[data-step="1"] .milestone-image,
+.milestone[data-step="2"] .milestone-image,
+.milestone[data-step="3"] .milestone-image,
+.milestone[data-step="4"] .milestone-image,
+.milestone[data-step="5"] .milestone-image {
+    clip-path: circle(50% at 50% 50%);
+    background: linear-gradient(135deg, #ff69b4, #98fb98);
+    padding: 4px;
+}
+
+/* Hover effects for milestone images */
+.milestone:hover .milestone-image {
+    transform: scale(1.1) rotate(5deg);
+}
+
+/* Update existing milestone styles */
+.milestone.completed {
+    position: relative;
+}
+
+.milestone.completed::after {
+    content: '✓';
+    position: absolute;
+    top: -5px;
+    right: -5px;
+    background: #e490c4;
+    color: rgb(19, 129, 102);
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 12px;
+    animation: popIn 0.3s ease-out;
+}
+
+@keyframes popIn {
+    0% {
+        transform: scale(0);
+    }
+    70% {
+        transform: scale(1.2);
+    }
+    100% {
+        transform: scale(1);
+    }
+}
+
+/* Make the percentage circle responsive */
+@media (max-width: 768px) {
+    .percentage-circle {
+        width: 80px;
+        height: 80px;
+    }
+
+    .percentage-text {
+        font-size: 1.2rem;
+    }
+
+    .completion-text {
+        font-size: 1rem;
+    }
+}
+
+.milestone-icon {
+    width: 80px;
+    height: 80px;
+    margin: 0 auto 0.5rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    background: linear-gradient(135deg, #ff69b4, #98fb98);
+    color: #074041;
+    font-size: 2rem;
+    transition: all 0.3s ease;
+    box-shadow: 0 5px 15px rgba(26, 250, 190, 0.3);
+}
+
+.milestone-icon i {
+    filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.2));
+}
+
+.milestone:hover .milestone-icon {
+    transform: scale(1.1) rotate(5deg);
+    box-shadow: 0 8px 25px rgba(26, 250, 190, 0.5);
+}
+
+/* Remove old image styles */
+.milestone-image {
+    display: none;
+}
+
+/* Update responsive styles */
+@media (max-width: 768px) {
+    .milestone-icon {
+        width: 60px;
+        height: 60px;
+        font-size: 1.5rem;
+    }
+} 
