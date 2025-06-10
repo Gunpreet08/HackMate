@@ -55,7 +55,7 @@ Designed to simplify team formation, enhance communication, and boost productivi
 | **Database** | MongoDB                                  |
 | **AI & Scripting** | Python (Ticker, Chatbot: Chaturbot)     |
 | **Real-Time** | Socket.io                                |
-| **Tools**    | Git, GitHub, Postman, VS Code, Docker    |
+| **Tools**    | Git, GitHub, VS Code                     |
 
 ---
 
