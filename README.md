@@ -1,78 +1,68 @@
-# HackMate
+# 💻 HackMate - Your All-in-One Hackathon Companion 🚀
 
-A comprehensive platform for hackathon participants and organizers.
+HackMate connects coders, builds teams, and empowers their hackathon journey — all in one powerful, interactive platform.
 
-## Features
+Designed to simplify team formation, enhance communication, and boost productivity during hackathons, HackMate is the perfect toolkit for both beginners and pros participating in tech competitions.
 
-- Interactive hackathon roadmap
-- FAQ section
-- User-friendly interface
-- MongoDB integration for data management
-- Responsive design
+---
 
-## Tech Stack
+## 🌟 Features
 
-- Frontend: HTML, CSS, JavaScript
-- Backend: Node.js, Express.js
-- Database: MongoDB
-- Additional Tools: Docker
+- 🔐 User Authentication & Profile Dashboard
+- 💬 Real-Time Chat System (Socket.io)
+- 👥 Team Management (Add, Invite, Remove Members)
+- 📅 Hackathon Calendar & Event Ticker (Python)
+- 🧠 Chaturbot – AI-powered Help & Idea Generator
+- 🧩 Daily Coding Challenges & Puzzle Section
+- 📍 Hackathon Roadmap Visualization
+- 🧑‍💻 Code Editor for Multiple Languages
+- ✅ Code Submission & Evaluation
+- 🎯 Matchmaking for Hackathon Teams
+- 📱 Fully Responsive UI/UX
 
-## Getting Started
+---
 
-### Prerequisites
+## 🎯 Objectives
 
-- Node.js (v14 or higher)
-- MongoDB
-- npm or yarn
+- Facilitate team-based learning and project building
+- Automate team formation and project submission
+- Keep participants updated with event milestones
+- Encourage skill-building through collaborative coding
+- Support innovation through smart idea generation
 
-### Installation
+---
 
-1. Clone the repository
+## 🧱 Modules
+
+- Homepage with Hackathon Ticker
+- Login / Signup System
+- Personalized User Dashboard
+- Team Management Panel
+- Daily Challenge & Puzzle Hub
+- AI Chatbot – Chaturbot
+- Real-Time Chat Integration
+- Hackathon Calendar & Event Tracker
+- Code Editor & Code Submission Flow
+
+---
+
+## 🛠 Tech Stack
+
+| Layer        | Technologies Used                        |
+|--------------|------------------------------------------|
+| **Frontend** | HTML, CSS, JavaScript                    |
+| **Backend**  | Node.js, Express.js                      |
+| **Database** | MongoDB                                  |
+| **AI & Scripting** | Python (Ticker, Chatbot: Chaturbot)     |
+| **Real-Time** | Socket.io                                |
+| **Tools**    | Git, GitHub, VS Code                     |
+
+---
+
+## 🧪 How to Run the Project Locally
+
+### 1. Clone the Repo
+
 ```bash
-git clone https://github.com/yourusername/HackMate.git
+git clone https://github.com/Gunpreet08/HackMate.git
 cd HackMate
-```
-
-2. Install dependencies
-```bash
-npm install
-```
-
-3. Set up environment variables
-Create a `.env` file in the root directory and add necessary environment variables.
-
-4. Start the server
-```bash
-cd formmongo/server
-npm start
-```
-
-## Project Structure
-
-```
-HackMate/
-├── formmongo/          # Backend server
-│   └── server/        # Server implementation
-├── pink/              # Frontend assets
-├── indexpink.html     # Main page
-├── hackathon-roadmap.html
-├── FAQ.html
-└── ... other files
-```
-
-## Contributing
-
-1. Fork the repository
-2. Create your feature branch (`git checkout -b feature/AmazingFeature`)
-3. Commit your changes (`git commit -m 'Add some AmazingFeature'`)
-4. Push to the branch (`git push origin feature/AmazingFeature`)
-5. Open a Pull Request
-
-## License
-
-This project is licensed under the MIT License - see the LICENSE file for details.
-
-## Contact
-
-Your Name - [@yourtwitter](https://twitter.com/yourtwitter)
-Project Link: [https://github.com/yourusername/HackMate](https://github.com/yourusername/HackMate) 
